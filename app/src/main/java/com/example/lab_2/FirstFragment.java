@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,10 +14,10 @@ public class FirstFragment extends Fragment {
 
     private OnFragmentInteractionListener listener;
 
-    // Интерфейс для обратной связи с Activity
+    // Интерфейс для связи с Activity
     public interface OnFragmentInteractionListener {
-        void openActivity1();
-        void openActivity2();
+        void onButton1Clicked();
+        void onButton2Clicked();
     }
 
     @Override
@@ -41,11 +40,11 @@ public class FirstFragment extends Fragment {
         Button btn2 = view.findViewById(R.id.btn_activity2);
 
         btn1.setOnClickListener(v -> {
-            if (listener != null) listener.openActivity1();
+            if (listener != null) listener.onButton1Clicked();
         });
 
         btn2.setOnClickListener(v -> {
-            if (listener != null) listener.openActivity2();
+            if (listener != null) listener.onButton2Clicked();
         });
 
         return view;
