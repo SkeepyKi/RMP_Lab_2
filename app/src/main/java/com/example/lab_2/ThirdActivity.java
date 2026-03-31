@@ -1,6 +1,7 @@
 package com.example.lab_2;
 
 import android.os.Bundle;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ThirdActivity extends AppCompatActivity {
@@ -8,5 +9,8 @@ public class ThirdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
+
+        TextView text = findViewById(R.id.textView);
+        text.setText("ThirdActivity\nПолучен флаг: " + getIntent().getFlags());
     }
 }

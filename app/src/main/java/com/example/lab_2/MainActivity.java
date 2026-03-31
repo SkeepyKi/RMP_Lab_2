@@ -20,12 +20,21 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnF
     }
 
     @Override
-    public void onButton1Clicked() {
-        startActivity(new Intent(this, SecondActivity.class));
+    public void onNormalClick() {
+        startActivity(new Intent(this, NormalActivity.class));
     }
 
     @Override
-    public void onButton2Clicked() {
-        startActivity(new Intent(this, ThirdActivity.class));
+    public void onClearTopClick() {
+        Intent intent = new Intent(this, ClearTopActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onNewTaskClick() {
+        Intent intent = new Intent(this, NewTaskActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

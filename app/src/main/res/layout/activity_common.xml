@@ -6,24 +6,33 @@
     android:gravity="center"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/btn_normal"
+    <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Обычный запуск" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите что-нибудь"
+        android:inputType="text"
+        android:layout_marginBottom="16dp"/>
 
     <Button
-        android:id="@+id/btn_clear_top"
+        android:id="@+id/btn_launch_again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Запустить ещё раз" />
+
+    <Button
+        android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="CLEAR_TOP" />
-
-    <Button
-        android:id="@+id/btn_new_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="NEW_TASK" />
+        android:text="Закрыть" />
 
 </LinearLayout>

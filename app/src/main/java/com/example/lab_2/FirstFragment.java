@@ -14,10 +14,10 @@ public class FirstFragment extends Fragment {
 
     private OnFragmentInteractionListener listener;
 
-    // Интерфейс для связи с Activity
     public interface OnFragmentInteractionListener {
-        void onButton1Clicked();
-        void onButton2Clicked();
+        void onNormalClick();
+        void onClearTopClick();
+        void onNewTaskClick();
     }
 
     @Override
@@ -36,15 +36,18 @@ public class FirstFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
-        Button btn1 = view.findViewById(R.id.btn_activity1);
-        Button btn2 = view.findViewById(R.id.btn_activity2);
+        Button btnNormal = view.findViewById(R.id.btn_normal);
+        Button btnClearTop = view.findViewById(R.id.btn_clear_top);
+        Button btnNewTask = view.findViewById(R.id.btn_new_task);
 
-        btn1.setOnClickListener(v -> {
-            if (listener != null) listener.onButton1Clicked();
+        btnNormal.setOnClickListener(v -> {
+            if (listener != null) listener.onNormalClick();
         });
-
-        btn2.setOnClickListener(v -> {
-            if (listener != null) listener.onButton2Clicked();
+        btnClearTop.setOnClickListener(v -> {
+            if (listener != null) listener.onClearTopClick();
+        });
+        btnNewTask.setOnClickListener(v -> {
+            if (listener != null) listener.onNewTaskClick();
         });
 
         return view;
