@@ -1,10 +1,16 @@
 package com.example.lab_2;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-public class MainActivity extends AppCompatActivity implements FirstFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity
+        implements NameFragment.OnNameEnteredListener,
+        TopicFragment.OnTopicSelectedListener {
+
+    private String userName;
+    private String selectedTopic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -12,29 +18,26 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnF
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.fragment_container, new FirstFragment())
-                    .commit();
+            loadFragment(new NameFragment());
         }
     }
 
-    @Override
-    public void onNormalClick() {
-        startActivity(new Intent(this, NormalActivity.class));
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null); // добавляем в back stack
+        transaction.commit();
     }
 
     @Override
-    public void onClearTopClick() {
-        Intent intent = new Intent(this, ClearTopActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+    public void onNameEntered(String name) {
+        userName = name;
+        loadFragment(TopicFragment.newInstance(name));
     }
 
     @Override
-    public void onNewTaskClick() {
-        Intent intent = new Intent(this, NewTaskActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+    public void onTopicSelected(String topic) {
+        selectedTopic = topic;
+        loadFragment(ConfirmFragment.newInstance(userName, topic));
     }
 }
