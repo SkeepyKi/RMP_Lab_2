@@ -3,9 +3,10 @@
     package="com.example.lab_2">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Lab2 Task3"
+        android:label="Lab2 Task4"
         android:theme="@style/Theme.AppCompat.Light">
         <activity android:name=".MainActivity"
             android:exported="true">

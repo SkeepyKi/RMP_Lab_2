@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+
 android {
     namespace = "com.example.lab_2"
     compileSdk {
@@ -36,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation("com.squareup:otto:1.3.8")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

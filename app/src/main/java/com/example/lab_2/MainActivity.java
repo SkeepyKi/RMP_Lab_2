@@ -1,11 +1,10 @@
 package com.example.lab_2;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NameFragment.OnNameEnteredListener,
         TopicFragment.OnTopicSelectedListener {
 
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null); // добавляем в back stack
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 

@@ -8,11 +8,12 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import com.squareup.otto.Subscribe;
 
-public class TopicFragment extends Fragment {
+public class TopicFragment extends BaseFragment {
 
     private OnTopicSelectedListener listener;
     private String userName;
@@ -60,10 +61,18 @@ public class TopicFragment extends Fragment {
                 RadioButton selected = view.findViewById(selectedId);
                 String topic = selected.getText().toString();
                 if (listener != null) listener.onTopicSelected(topic);
+
+                // Отправляем событие через шину
+                bus.post(new MessageEvent("Выбрана тема: " + topic));
             }
         });
 
         return view;
+    }
+
+    @Subscribe
+    public void onMessageEvent(MessageEvent event) {
+        Toast.makeText(getActivity(), "TopicFragment получил: " + event.getText(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

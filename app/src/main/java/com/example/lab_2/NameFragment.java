@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import com.squareup.otto.Subscribe;
 
-public class NameFragment extends Fragment {
+public class NameFragment extends BaseFragment {
 
     private OnNameEnteredListener listener;
 
@@ -45,6 +46,11 @@ public class NameFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Subscribe
+    public void onMessageEvent(MessageEvent event) {
+        Toast.makeText(getActivity(), "NameFragment получил: " + event.getText(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

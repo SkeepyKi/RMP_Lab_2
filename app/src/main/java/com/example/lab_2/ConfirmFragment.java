@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import com.squareup.otto.Subscribe;
 
-public class ConfirmFragment extends Fragment {
+public class ConfirmFragment extends BaseFragment {
 
     public static ConfirmFragment newInstance(String name, String topic) {
         ConfirmFragment fragment = new ConfirmFragment();
@@ -41,5 +42,10 @@ public class ConfirmFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Subscribe
+    public void onMessageEvent(MessageEvent event) {
+        Toast.makeText(getActivity(), "ConfirmFragment получил: " + event.getText(), Toast.LENGTH_SHORT).show();
     }
 }
